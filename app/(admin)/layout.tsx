@@ -12,13 +12,13 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode
 }) {
-  const {data: session, status} = useSession({required: true})
-  const router = useRouter();
-  if(status === "loading") return <div>Loading...</div>
-  if(!session) {
-    router.push("admin/signin")
-    return null
-  }
+  // const {data: session, status} = useSession({required: true})
+  // const router = useRouter();
+  // if(status === "loading") return <div>Loading...</div>
+  // if(!session) {
+  //   router.push("admin/signin")
+  //   return null
+  // }
   return <>{children}</>;
 
 }

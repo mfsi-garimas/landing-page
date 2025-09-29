@@ -11,7 +11,7 @@ import { SessionProvider } from "next-auth/react";
 
 export default function AdminPageClient({ session }: { session: any }) {
   return (
-    <SessionProvider session={session}>
+    // <SessionProvider session={session}>
       <Admin dataProvider={simpleRestProvider("/api")}>
         <Resource name="services" list={ServiceList} edit={ServiceEdit} create={ServiceCreate} />
         <Resource name="client_logo" list={ClientLogoList} create={ClientLogoCreate} />
@@ -20,6 +20,6 @@ export default function AdminPageClient({ session }: { session: any }) {
         <Resource name="success_stories" list={SuccessStoriesList} edit={SuccessStoriesEdit} create={SuccessStoriesCreate} />
         <Resource name="inquiries" list={ContactList} />
       </Admin>
-    </SessionProvider>
+    // </SessionProvider>
   );
 }
