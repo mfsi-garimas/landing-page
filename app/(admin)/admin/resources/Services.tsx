@@ -1,4 +1,4 @@
-import {required,minLength,maxLength,List, Datagrid, TextField, Edit, SimpleForm, TextInput, Create, DeleteButton, EditButton, useNotify} from "react-admin";
+import {required,minLength,maxLength,List, Datagrid, TextField, Edit, SimpleForm, TextInput, Create, DeleteButton, EditButton} from "react-admin";
 export const ServiceList = () => (
     <List >
         <Datagrid rowClick="edit">
@@ -10,13 +10,9 @@ export const ServiceList = () => (
 )
 
 export const ServiceEdit = () => {
-    const notify = useNotify();
     return (
         <Edit>
-        <SimpleForm onError={(error) => {
-            console.log('gg'+error)
-                    notify(`Error: ${error}`, { type: 'error' });
-                }}>
+        <SimpleForm>
             <TextInput source="title"  fullWidth/>
             <TextInput source="summary" validate={[required(), minLength(5), maxLength(150)]} multiline fullWidth  />
             <TextInput source="description" multiline fullWidth />
