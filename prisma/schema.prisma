@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Services {
+  id Int @id @default(autoincrement())
+  title String
+  summary String @db.Text
+  description String @db.Text
+  createdAt DateTime @default(now())
+}
+
+model ClientLogo {
+  id Int @id @default(autoincrement())
+  name String
+  image String 
+  createdAt DateTime @default(now())
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  name String?
+  email String @unique
+  password String
+  role String @default("admin")
+}
+
+model Testimonials {
+  id Int @id @default(autoincrement())
+  message String?
+  name String @unique
+  company String
+  clientLogo String @default("admin")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model SuccessStories {
+  id Int @id @default(autoincrement())
+  title String @unique
+  summary String 
+  description String @db.Text
+  slug String
+  image String @default("admin")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Insights {
+  id Int @id @default(autoincrement())
+  title String @unique
+  summary String 
+  slug String
+  description String @db.Text
+  image String @default("admin")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Contact {
+  id Int @id @default(autoincrement())
+  name String @unique
+  email String 
+  phone String
+  message String 
+  createdAt DateTime @default(now())
+}
