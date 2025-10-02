@@ -17,7 +17,7 @@ export async function DELETE(req: Request, context: { params: Promise<{id: strin
     return NextResponse.json({ success: false, error: 'Failed to remove record' }, { status: 500 })
 }
 
-export async function PUT(req: Request, context: { params: Promise<{id: number}> }) {
+export async function PUT(req: Request, context: { params: Promise<{id: string}> }) {
     const {id} =  await context.params;
 
     const body = await req.json();
@@ -40,9 +40,9 @@ export async function PUT(req: Request, context: { params: Promise<{id: number}>
             });
 
         const result: any = await uploadPromise();
-         updated = await updateData({ name, clientLogo: result.secure_url, company, message}, id)
+         updated = await updateData({ name, clientLogo: result.secure_url, company, message}, Number(id))
     } else {
-        updated = await updateData({ name, company, message}, id)
+        updated = await updateData({ name, company, message}, Number(id))
     }
     if (updated) {
       return NextResponse.json({
