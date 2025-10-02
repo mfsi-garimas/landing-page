@@ -6,7 +6,7 @@ export default async function getAll() {
     return await prisma.successStories.findMany()
 }
 
-export async function getBySlug(slug:String) {
+export async function getBySlug(slug:string) {
     return await prisma.successStories.findFirst({ where: { slug: String(slug) } });
 }
 

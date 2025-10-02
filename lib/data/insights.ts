@@ -10,7 +10,7 @@ export async function getById(id:number) {
     return await prisma.insights.findUnique({where: {id : Number(id)}})
 }
 
-export async function getBySlug(slug:String) {
+export async function getBySlug(slug:string) {
     return await prisma.insights.findFirst({ where: { slug: String(slug) } });
 }
 

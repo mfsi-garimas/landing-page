@@ -7,7 +7,7 @@ export default function Footer() {
                 <div className="footer-logo">
                 <div className="footer-logo-text">Chromezy</div>
                 </div>
-                <p className="footer-description">Not just about software & Product development; we're your tech partners, crafting modern digital solutions for next-gen excellence!</p>
+                <p className="footer-description">Not just about software & Product development; we&apos;re your tech partners, crafting modern digital solutions for next-gen excellence!</p>
                 <p>+1 xx xxx 0901</p>
                 <p>sales@xxxx.com</p>
             </div>

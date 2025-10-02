@@ -5,6 +5,6 @@ export default function isUploadApiResponse(obj: unknown): obj is UploadApiRespo
     typeof obj === "object" &&
     obj !== null &&
     "secure_url" in obj &&
-    typeof (obj as any).secure_url === "string"
+    typeof (obj).secure_url === "string"
   );
 }
