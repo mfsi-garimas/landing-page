@@ -1,5 +1,13 @@
-import { required, minLength, maxLength, List, Datagrid, TextField, Edit, SimpleForm, TextInput, Create, DeleteButton, EditButton, ImageInput, ImageField} from "react-admin";
-
+import { required, minLength, maxLength, List, Datagrid, TextField, SimpleForm, TextInput, Create, DeleteButton, ImageInput, ImageField} from "react-admin";
+interface Image {
+  rawFile?: File;    
+  title?: string;    
+  src?: string;   
+}
+interface Data {
+  image?: Image;  
+  name: String;  
+}
 export const ClientLogoList = () => (
     <List>
         <Datagrid>
@@ -9,21 +17,25 @@ export const ClientLogoList = () => (
         </Datagrid>
     </List>
 )
+const transform = async (data: Data) => {
+    if (data && data.image) {
+        const reader = new FileReader();
+        const img = data.image;
+        const rawFile = img.rawFile;
+        
+        if (rawFile) {
+            const base64 = await new Promise<string>((resolve, reject) => {
+                reader.onload = () => resolve(reader.result as string);
+                reader.onerror = reject;
+                reader.readAsDataURL(rawFile as File);
+            });
 
-const transform = async (data: any) => {
-    if (data.image?.rawFile) {
-      const reader = new FileReader();
-      const base64 = await new Promise<string>((resolve, reject) => {
-        reader.onload = () => resolve(reader.result as string);
-        reader.onerror = reject;
-        reader.readAsDataURL(data.image.rawFile);
-      });
-
-      data.image = { src: base64, title: data.image.title };
+            data.image = { src: base64, title: img.title };
+        }
     }
-          return data
+    return data;
+};
 
-}
 
 export const ClientLogoCreate = () => (
     <Create transform={transform}>

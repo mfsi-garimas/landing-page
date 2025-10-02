@@ -1,5 +1,15 @@
 import { List, Datagrid, TextField, Edit, SimpleForm, TextInput, Create, DeleteButton, EditButton, ImageInput, ImageField} from "react-admin";
-
+interface Image {
+  rawFile?: File;    
+  title?: string;    
+  src?: string;   
+}
+interface Data {
+  image?: Image;  
+  title: String;  
+  summary: String;  
+  description: String;  
+}
 export const InsightsList = () => (
     <List>
         <Datagrid rowClick="edit">
@@ -11,20 +21,24 @@ export const InsightsList = () => (
     </List>
 )
 
-const transform = async (data: any) => {
-    if (data.image?.rawFile) {
-      const reader = new FileReader();
-      const base64 = await new Promise<string>((resolve, reject) => {
-        reader.onload = () => resolve(reader.result as string);
-        reader.onerror = reject;
-        reader.readAsDataURL(data.image.rawFile);
-      });
+const transform = async (data: Data) => {
+    if (data && data.image) {
+        const reader = new FileReader();
+        const img = data.image;
+        const rawFile = img.rawFile;
+        
+        if (rawFile) {
+            const base64 = await new Promise<string>((resolve, reject) => {
+                reader.onload = () => resolve(reader.result as string);
+                reader.onerror = reject;
+                reader.readAsDataURL(rawFile as File);
+            });
 
-      data.image = { src: base64, title: data.image.title };
+            data.image = { src: base64, title: img.title };
+        }
     }
-    return data
-
-}
+    return data;
+};
 
 export const InsightsEdit = () => (
     <Edit transform={transform}>
