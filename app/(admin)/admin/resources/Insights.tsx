@@ -6,9 +6,9 @@ interface Image {
 }
 interface Data {
   image?: Image;  
-  title: String;  
-  summary: String;  
-  description: String;  
+  title: string;  
+  summary: string;  
+  description: string;  
 }
 export const InsightsList = () => (
     <List>
@@ -49,7 +49,6 @@ export const InsightsEdit = () => (
             <ImageInput
                 source="image"
                 label="Image"
-                accept={"image/*" as any}
                 fullWidth >
                 <ImageField source="src" title="title" />
             </ImageInput>
@@ -66,7 +65,6 @@ export const InsightsCreate = () => (
             <ImageInput
                 source="image"
                 label="Image"
-                accept={"image/*" as any}
                 fullWidth >
                 <ImageField source="src" title="title" />
             </ImageInput>

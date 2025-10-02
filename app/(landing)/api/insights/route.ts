@@ -3,6 +3,7 @@ import {getAllByFilter, countAll , createData} from "@/lib/data/insights";
 import slugify from "slugify";
 import cloudinary from "@/lib/cloudinary";
 import generateRandomId from "@/lib/generate_random";
+import isUploadApiResponse from "@/lib/cloudinary_api_response";
 
 export async function GET(req: Request) {
     const url = new URL(req.url)
@@ -51,7 +52,14 @@ export async function POST(req: Request) {
       stream.end(buffer);
     });
 
-  const result: any = await uploadPromise();
+  const result = await uploadPromise();
+          
+  if (!isUploadApiResponse(result)) {
+    return NextResponse.json(
+      { success: false, error: "Invalid upload response" },
+      { status: 500 }
+    );
+  }
 
   const data = await createData({ title, image: result.secure_url, summary, description, slug});
 

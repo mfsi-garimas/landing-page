@@ -6,7 +6,7 @@ interface Image {
 }
 interface Data {
   image?: Image;  
-  name: String;  
+  name: string;  
 }
 export const ClientLogoList = () => (
     <List>
@@ -44,7 +44,6 @@ export const ClientLogoCreate = () => (
             <ImageInput
                 source="image"
                 label="Client Logo"
-                accept={"image/*" as any}
                 fullWidth validate={[required()]} >
                 <ImageField source="src" title="title" />
             </ImageInput>

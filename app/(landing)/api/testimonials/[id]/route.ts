@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import {getById, deleteData, updateData} from "@/lib/data/testimonials";
 import cloudinary from "@/lib/cloudinary";
 import generateRandomId from "@/lib/generate_random";
-
+import isUploadApiResponse from "@/lib/cloudinary_api_response";
 export async function GET(req: Request, context: { params: Promise<{id: string}> }) {
     const {id} =  await context.params;
     const record = await getById(Number(id));
@@ -39,7 +39,15 @@ export async function PUT(req: Request, context: { params: Promise<{id: string}>
             stream.end(buffer);
             });
 
-        const result: any = await uploadPromise();
+        const result = await uploadPromise();
+                  
+          if (!isUploadApiResponse(result)) {
+            return NextResponse.json(
+              { success: false, error: "Invalid upload response" },
+              { status: 500 }
+            );
+          }
+        
          updated = await updateData({ name, clientLogo: result.secure_url, company, message}, Number(id))
     } else {
         updated = await updateData({ name, company, message}, Number(id))

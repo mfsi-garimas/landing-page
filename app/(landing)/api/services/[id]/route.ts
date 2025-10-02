@@ -16,28 +16,17 @@ export async function DELETE(req: Request, context: { params: Promise<{id: strin
 }
 
 export async function PUT(req: Request, context: { params: Promise<{id: string}> }) {
-    try {
-        const {id} =  await context.params;
-        const body = await req.json()
-        const updated = await updateData(body, Number(id))
-        if(updated) {
-            return NextResponse.json({
-                id: updated.id,
-                title: updated.title
-            });
-        }
-        return NextResponse.json({success:true})
-    } catch(error: any) {
-        if (error.code === 'P2000') {
-            return NextResponse.json(
-                { error: 'One of the fields is too long for the database column' },
-                { status: 400 }
-            );
-        }
-        return NextResponse.json(
+    const {id} =  await context.params;
+    const body = await req.json()
+    const updated = await updateData(body, Number(id))
+    if(updated) {
+        return NextResponse.json({
+            id: updated.id,
+            title: updated.title
+        });
+    }
+    return NextResponse.json(
             { error: 'Failed to update record' },
             { status: 500 }
         );
-    }
-
 }

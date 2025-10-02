@@ -3,6 +3,8 @@ import {getById, deleteData, updateData} from "@/lib/data/insights";
 import cloudinary from "@/lib/cloudinary";
 import slugify from "slugify";
 import generateRandomId from "@/lib/generate_random";
+import isUploadApiResponse from "@/lib/cloudinary_api_response";
+
 
 export async function GET(req: Request, context: { params: Promise<{id: string}> }) {
     const {id} =  await context.params;
@@ -40,7 +42,14 @@ export async function PUT(req: Request, context: { params: Promise<{id: string}>
             stream.end(buffer);
             });
 
-        const result: any = await uploadPromise();
+        const result = await uploadPromise();
+        
+          if (!isUploadApiResponse(result)) {
+            return NextResponse.json(
+              { success: false, error: "Invalid upload response" },
+              { status: 500 }
+            );
+          }
          updated = await updateData({ title, image: result.secure_url, summary, description, slug}, Number(id))
     } else {
         updated = await updateData({ title, summary, description, slug}, Number(id))
