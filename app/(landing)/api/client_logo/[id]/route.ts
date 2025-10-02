@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import {getById, deleteData} from "@/lib/data/client_logo";
-export async function GET(req: Request, context: { params: Promise<{id: number}> }) {
+export async function GET(req: Request, context: { params: Promise<{id: string}> }) {
     const {id} =  await context.params;
-    const record = await getById(id);
+    const record = await getById(Number(id));
     if(!record) return NextResponse.json({error: "Not Found"})
     return NextResponse.json(record)
 }
