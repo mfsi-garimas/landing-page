@@ -1,0 +1,18 @@
+.logout_button {
+  background-color: #ef4444; /* Tailwind's red-500 */
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  position: absolute;
+  right: 0;
+  z-index: 9;
+  margin-right: 96px;
+  margin-top: 9px;
+}
+
+.logout_button:hover {
+  background-color: #dc2626; /* Tailwind's red-600 */
+}

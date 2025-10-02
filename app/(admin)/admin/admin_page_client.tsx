@@ -9,7 +9,7 @@ import { SuccessStoriesList, SuccessStoriesCreate, SuccessStoriesEdit } from "./
 import { ContactList } from "./resources/Contact";
 import { SessionProvider } from "next-auth/react";
 
-export default function AdminPageClient({ session }: { session: any }) {
+export default function AdminPageClient() {
   return (
     // <SessionProvider session={session}>
       <Admin dataProvider={simpleRestProvider("/api")}>
