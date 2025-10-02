@@ -24,7 +24,7 @@ export default function Navbar() {
                 <li className="nav-item"><Link className="nav-link" href="/#success-stories">Success Stories</Link></li>
                 </ul>
 
-                <a href="/#contact" className="btn btn-contact">Contact Us</a>
+                <Link href="/#contact" className="btn btn-contact">Contact Us</Link>
             </div>
             </div>
         </nav>

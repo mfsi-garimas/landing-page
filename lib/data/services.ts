@@ -7,7 +7,7 @@ export async function getAllServices() {
     return await prisma.services.findMany()
 }
 
-export async function getById(id:Number) {
+export async function getById(id:number) {
     return await prisma.services.findUnique({where: {id : Number(id)}})
 }
 
@@ -22,11 +22,11 @@ export async function createData(input : CreateServiceInput) {
     return await prisma.services.create({data: input})
 }
 
-export async function deleteData(id:Number) {
+export async function deleteData(id:number) {
     return await prisma.services.delete({where: {id: Number(id)}})
 }
 
-export async function updateData(input: UpdateServiceInput, id:Number) {
+export async function updateData(input: UpdateServiceInput, id:number) {
     return await prisma.services.update({
         where: {id:Number(id)}, 
         data: input

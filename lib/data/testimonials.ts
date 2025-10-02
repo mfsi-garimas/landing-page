@@ -6,7 +6,7 @@ export default async function getAll() {
     return await prisma.testimonials.findMany()
 }
 
-export async function getById(id:Number) {
+export async function getById(id:number) {
     return await prisma.testimonials.findUnique({where: {id : Number(id)}})
 }
 
@@ -21,11 +21,11 @@ export async function createData(input : CreateTestimonialLogoInput) {
     return await prisma.testimonials.create({data: input})
 }
 
-export async function deleteData(id:Number) {
+export async function deleteData(id:number) {
     return await prisma.testimonials.delete({where: {id: Number(id)}})
 }
 
-export async function updateData(input: UpdateTestimonialLogoInput, id:Number) {
+export async function updateData(input: UpdateTestimonialLogoInput, id:number) {
     return await prisma.testimonials.update({
         where: {id:Number(id)}, 
         data: input

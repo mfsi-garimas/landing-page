@@ -6,7 +6,7 @@ export default async function getAll() {
     return await prisma.insights.findMany()
 }
 
-export async function getById(id:Number) {
+export async function getById(id:number) {
     return await prisma.insights.findUnique({where: {id : Number(id)}})
 }
 
@@ -25,11 +25,11 @@ export async function createData(input : CreateInput) {
     return await prisma.insights.create({data: input})
 }
 
-export async function deleteData(id:Number) {
+export async function deleteData(id:number) {
     return await prisma.insights.delete({where: {id: Number(id)}})
 }
 
-export async function updateData(input: UpdateInput, id:Number) {
+export async function updateData(input: UpdateInput, id:number) {
     return await prisma.insights.update({
         where: {id:Number(id)}, 
         data: input

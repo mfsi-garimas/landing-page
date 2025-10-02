@@ -11,7 +11,7 @@ export default async function Insights() {
             <div className="row">
                 <div className="col-12">
                     <h2>FEATURED INSIGHTS</h2>
-                    <p className="subtitle">Were you looking to explore a specific topic? You're in the right spot.</p>
+                    <p className="subtitle">Were you looking to explore a specific topic? You&apos;re in the right spot.</p>
                 </div>
             </div>
             <div className="row">

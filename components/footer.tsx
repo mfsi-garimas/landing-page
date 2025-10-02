@@ -1,3 +1,4 @@
+import Link from "next/link"
 export default function Footer() {
     return (
         <footer className="main-footer container-fluid">
@@ -14,24 +15,24 @@ export default function Footer() {
             <div className="col-6 col-md-2 mb-4">
                 <div className="footer-link-group">
                 <h5>Services</h5>
-                <a href="/">Home</a>
-                <a href="/about">About Us</a>
+                <Link href="/">Home</Link>
+                <Link href="/about">About Us</Link>
                 </div>
             </div>
 
             <div className="col-6 col-md-2 mb-4">
                 <div className="footer-link-group">
                     <h5>Insights</h5>
-                    <a href="/#services">AI</a>
-                    <a href="/#services">MVP</a>
-                    <a href="/#services">SaaS</a>
+                    <Link href="/#services">AI</Link>
+                    <Link href="/#services">MVP</Link>
+                    <Link href="/#services">SaaS</Link>
                 </div>
             </div>
 
             <div className="col-12 col-md-4 mb-4">
                 <div className="footer-link-group">
                 <h5>Work with us</h5>
-                <a href="/#contact">Contact us</a>
+                <Link href="/#contact">Contact us</Link>
                 </div>
             </div>
             </div>
@@ -41,7 +42,7 @@ export default function Footer() {
                 © Copyright 20xx | xxxx xxxx, All Rights Reserved | Designed by Debarshis Naik
             </div>
             <div className="col-12 col-md-6 text-center text-md-end mt-2 mt-md-0">
-                Connect with us: <a href="#">FB</a> <a href="#">IG</a> <a href="#">LI</a>
+                Connect with us: <Link href="#">FB</Link> <Link href="#">IG</Link> <Link href="#">LI</Link>
             </div>
             </div>
         </footer>

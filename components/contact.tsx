@@ -29,7 +29,7 @@ export default function Contact() {
                 </div>
             </div>
             <div className="col-12 col-md-6 contact-right">
-                <h4 className="form-title">Let's Talk!</h4>
+                <h4 className="form-title">Let&apos;s Talk!</h4>
                 {( state.message && state.errors == null) && (<p className="formStatus">{state.message}</p>)}
                 <form action={formAction}>
                 <div className="mb-3">

@@ -10,7 +10,7 @@ export async function getBySlug(slug:String) {
     return await prisma.successStories.findFirst({ where: { slug: String(slug) } });
 }
 
-export async function getById(id:Number) {
+export async function getById(id:number) {
     return await prisma.successStories.findUnique({where: {id : Number(id)}})
 }
 
@@ -25,11 +25,11 @@ export async function createData(input : CreateInput) {
     return await prisma.successStories.create({data: input})
 }
 
-export async function deleteData(id:Number) {
+export async function deleteData(id:number) {
     return await prisma.successStories.delete({where: {id: Number(id)}})
 }
 
-export async function updateData(input: UpdateInput, id:Number) {
+export async function updateData(input: UpdateInput, id:number) {
     return await prisma.successStories.update({
         where: {id:Number(id)}, 
         data: input

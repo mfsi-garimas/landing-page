@@ -13,7 +13,7 @@ export default async function Services() {
             <div className="col-12 col-lg-12 mx-auto">
                 <h2>PRODUCT ENGINEERING</h2>
                 <p className="section-description">
-                Discover the impact of bespoke digital solutions tailored precisely to your business's distinct 
+                Discover the impact of bespoke digital solutions tailored precisely to your business&apos;s distinct 
                 requirements. Our experienced team of professionals ensures you receive outstanding results 
                 that consistently exceed your expectations.
                 </p>
