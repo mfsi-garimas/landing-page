@@ -15,11 +15,11 @@ export async function DELETE(req: Request, context: { params: Promise<{id: strin
     return NextResponse.json({ success: false, error: 'Failed to remove record' }, { status: 500 })
 }
 
-export async function PUT(req: Request, { params }: { params: Promise<{ id: number }> }) {
+export async function PUT(req: Request, context: { params: Promise<{id: string}> }) {
     try {
-        const awaitedParams = await params;
+        const {id} =  await context.params;
         const body = await req.json()
-        const updated = await updateData(body, awaitedParams.id)
+        const updated = await updateData(body, Number(id))
         if(updated) {
             return NextResponse.json({
                 id: updated.id,
