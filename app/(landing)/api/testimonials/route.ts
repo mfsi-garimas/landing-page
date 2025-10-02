@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import {getAllByFilter, countAll , createData} from "@/lib/data/testimonials";
 import cloudinary from "@/lib/cloudinary";
 import generateRandomId from "@/lib/generate_random";
-
+import isUploadApiResponse from "@/lib/cloudinary_api_response";
 export async function GET(req: Request) {
     const url = new URL(req.url)
     const _page = Number(url.searchParams.get("_page") || 1)
@@ -48,7 +48,15 @@ export async function POST(req: Request) {
       stream.end(buffer);
     });
 
-  const result: any = await uploadPromise();
+  const result = await uploadPromise();
+            
+    if (!isUploadApiResponse(result)) {
+      return NextResponse.json(
+        { success: false, error: "Invalid upload response" },
+        { status: 500 }
+      );
+    }
+  
 
   const data = await createData({ name, clientLogo: result.secure_url, company, message});
 
