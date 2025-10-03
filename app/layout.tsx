@@ -1,4 +1,3 @@
-import NextAuthSessionProvider from "./providers";
 import { Montserrat } from "next/font/google";
 
 const montserrat = Montserrat({
@@ -16,9 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.variable}>
-        <NextAuthSessionProvider>
           {children} 
-        </NextAuthSessionProvider>
       </body>
     </html>
   );

@@ -22,7 +22,6 @@
     "cloudinary": "^2.7.0",
     "lucia": "^3.2.2",
     "next": "15.5.4",
-    "next-auth": "^4.24.11",
     "prisma": "^5.14.0",
     "ra-data-simple-rest": "^5.11.4",
     "react": "19.1.0",

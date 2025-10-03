@@ -3,9 +3,9 @@ export default function Navbar() {
     return (
         <nav className="navbar navbar-expand-lg">
             <div className="container-fluid">
-            <a className="navbar-brand" href="#">
+            <Link className="navbar-brand" href="/">
                 Chromezy
-            </a>
+            </Link>
 
             <button className="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span className="navbar-toggler-icon"></span>

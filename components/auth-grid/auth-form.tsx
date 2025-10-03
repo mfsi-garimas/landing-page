@@ -2,6 +2,7 @@
 import { useActionState } from "react"
 import { userLogin } from "@/lib/user-login"
 import styles from './auth-form.module.css'
+import AuthButton from "./auth-button"
 export default function AuthForm() {
     const [state, formAction] =useActionState(userLogin, {
         errors: null
@@ -24,9 +25,7 @@ export default function AuthForm() {
                 <div className={styles.error}>{state.errors.password[0]}</div>
             )}
             <p>
-                <button type="submit">
-                Login
-                </button>
+                <AuthButton />
             </p>
         </form>
     )

@@ -18,16 +18,17 @@ export default function InsightsGrid({insights}: GridProps) {
     return (
             <>
             {insights.map((insight)=> (
-                    <div className="col-12 col-md-4" key={insight.id}>
-                        <div className="insight-card">
-                            <Image width="400" height="400" src={insight.image} className="card-img-top" alt={insight.title} />
-                            <div className="card-body">
-                                <h5 className="card-title">{insight.title}</h5>
-                                <p className="card-text">{insight.summary}</p>
-                                <Link href={`/insights/${insight.slug}`} className="read-more">Read More →</Link>
-                            </div>
+                        <div className="col-12 col-md-4 insights-grid" >
+                            <Link href={`/insights/${insight.slug}`} key={insight.id}>
+                                <div className="insight-card">
+                                    <Image width="400" height="400" src={insight.image} className="card-img-top" alt={insight.title} />
+                                    <div className="card-body">
+                                        <h5 className="card-title">{insight.title}</h5>
+                                        <p className="card-text">{insight.summary}</p>
+                                    </div>
+                                </div>
+                            </Link>
                         </div>
-                    </div>
             ))}
             </>
     )
