@@ -1,5 +1,6 @@
 import { getBySlug } from "@/lib/data/insights"
 import { notFound } from "next/navigation";
+import Image from "next/image";
 export default async function InsightsDetails(context: { params: Promise<{slug: string}> }) {
     const {slug} =  await context.params;
     const data = await getBySlug(slug)
@@ -10,7 +11,7 @@ export default async function InsightsDetails(context: { params: Promise<{slug: 
         <section className="services-section container-fluid">
             <div className="row">
                 <div className="col-12 col-lg-6 mx-auto">
-                    <img src={data.image} alt={data.title} className="details-image"/>
+                    <Image src={data.image} alt={data.title} width="400" height="400" className="details-image"/>
                 </div>
                 <div className="col-12 col-lg-6 mx-auto">
                     <h2>{data.title}</h2>

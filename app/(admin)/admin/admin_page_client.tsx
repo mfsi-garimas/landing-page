@@ -7,11 +7,9 @@ import { TestimoniaList, TestimonialCreate, TestimonialEdit } from "./resources/
 import { InsightsList, InsightsCreate, InsightsEdit } from "./resources/Insights";
 import { SuccessStoriesList, SuccessStoriesCreate, SuccessStoriesEdit } from "./resources/SuccessStories";
 import { ContactList } from "./resources/Contact";
-import { SessionProvider } from "next-auth/react";
 
 export default function AdminPageClient() {
   return (
-    // <SessionProvider session={session}>
       <Admin dataProvider={simpleRestProvider("/api")}>
         <Resource name="services" list={ServiceList} edit={ServiceEdit} create={ServiceCreate} />
         <Resource name="client_logo" list={ClientLogoList} create={ClientLogoCreate} />
@@ -20,6 +18,5 @@ export default function AdminPageClient() {
         <Resource name="success_stories" list={SuccessStoriesList} edit={SuccessStoriesEdit} create={SuccessStoriesCreate} />
         <Resource name="inquiries" list={ContactList} />
       </Admin>
-    // </SessionProvider>
   );
 }

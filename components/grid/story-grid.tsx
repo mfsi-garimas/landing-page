@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image";
 type Story = {
     id: number,
     title: string,
@@ -20,7 +21,7 @@ export default function StoryGrid({stories}: GridProps) {
                     <div className="col-12 col-md-6 mb-4" key={story.id}>
                         <div className="project-card">
                             <div className="position-relative">
-                                <img src={story.image} alt={story.title} className="img-fluid card-image" />
+                                <Image width="400" height="400" src={story.image} alt={story.title} className="img-fluid card-image" />
                                 <span className="tag position-absolute top-0 end-0 m-3">Success Stories</span>
                             </div>
                             <div className="card-content">

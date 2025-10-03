@@ -40,9 +40,18 @@ export async function handleSubmit(prev:FormState, formData: FormData): Promise<
         }
         const {name,email, phone,message} = data
         const result = await createData({name,email,phone,message})
-        
+        if(!result) {
+            return {
+                message: 'Something went wrong',
+                errors: {
+                    email : ["'Something went wrong'"]
+                }
+            };
+        }
+
         return {
             message: 'Message sent successfully!',
             errors: null
         };
+        
     }

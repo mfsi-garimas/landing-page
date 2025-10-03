@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image";
 type Insights = {
     id: number,
     title: string,
@@ -19,7 +20,7 @@ export default function InsightsGrid({insights}: GridProps) {
             {insights.map((insight)=> (
                     <div className="col-12 col-md-4" key={insight.id}>
                         <div className="insight-card">
-                            <img src={insight.image} className="card-img-top" alt={insight.title} />
+                            <Image width="400" height="400" src={insight.image} className="card-img-top" alt={insight.title} />
                             <div className="card-body">
                                 <h5 className="card-title">{insight.title}</h5>
                                 <p className="card-text">{insight.summary}</p>

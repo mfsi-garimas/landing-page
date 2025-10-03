@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import {getAllServicesByFilter, getById, countAllServices , createData, deleteData, updateData} from "@/lib/data/services";
+import {getAllServicesByFilter, countAllServices , createData} from "@/lib/data/services";
 
 export async function GET(req: Request) {
     const url = new URL(req.url)

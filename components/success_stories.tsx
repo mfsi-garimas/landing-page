@@ -6,7 +6,6 @@ async function StoryData() {
     return <StoryGrid stories={stories} />
 }
 export default async function SuccessStories() {
-    const data = await getAll()
     return (
         <section className="success-stories container-fluid" id="success-stories">
             <div className="row">

@@ -1,4 +1,5 @@
 import getAllClientLogo from "@/lib/data/client_logo"
+import Image from "next/image";
 export default async function Hero() {
     const clientLogo = await getAllClientLogo();
     return (
@@ -36,7 +37,7 @@ export default async function Hero() {
 
             <div className="logos text-center container d-flex flex-wrap justify-content-center">
                 {clientLogo.map((logo)=> (
-                    <img src={logo.image} alt={logo.name} key={logo.id} />
+                    <Image width="100" height="50" src={logo.image} alt={logo.name} key={logo.id} />
                 ))}
             </div>
         </section>

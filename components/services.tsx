@@ -6,7 +6,6 @@ async function ServicesData() {
     return <ServicesGrid services={services} />
 }
 export default async function Services() {
-    const services = await getAllServices()
     return(
         <section className="services-section container-fluid" id="services">
             <div className="row">
