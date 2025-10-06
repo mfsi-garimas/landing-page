@@ -18,8 +18,8 @@ export default function InsightsGrid({insights}: GridProps) {
     return (
             <>
             {insights.map((insight)=> (
-                        <div className="col-12 col-md-4 insights-grid" >
-                            <Link href={`/insights/${insight.slug}`} key={insight.id}>
+                        <div className="col-12 col-md-4 insights-grid" key={insight.id}>
+                            <Link href={`/insights/${insight.slug}`}>
                                 <div className="insight-card">
                                     <Image width="400" height="400" src={insight.image} className="card-img-top" alt={insight.title} />
                                     <div className="card-body">
